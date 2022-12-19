@@ -32,7 +32,6 @@ const fetchData = async (id) =>{
 }
 
 const pintarCard = (api) => {
-    //console.log(pokemon);
     const flex = document.querySelector('.flex');
     const template = document.querySelector('#template-card').content;
     const clone = template.cloneNode(true);

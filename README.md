@@ -1,0 +1,1 @@
+https://alix103.github.io/Rick-and-Morty-API/
