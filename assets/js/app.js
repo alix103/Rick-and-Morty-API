@@ -43,3 +43,4 @@ const pintarCards = data => {
         items.appendChild(fragment)
         console.log(items);
 }
+
