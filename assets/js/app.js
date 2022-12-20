@@ -5,12 +5,17 @@ const template = document.getElementById('template-card').content;
 const fragment = document.createDocumentFragment();
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetchData();
+    const random = getRandomInt(1,42);
+    fetchData(random);
 })
 
-const fetchData = async () =>{
+const getRandomInt = (min,max) =>{
+    return Math.floor(Math.random() * (max-min) + min);
+}
+
+const fetchData = async (id) =>{
     try {
-        const res = await fetch(`https://rickandmortyapi.com/api/character`);
+        const res = await fetch(`https://rickandmortyapi.com/api/character/?page=${id}`);
         const data = await res.json();
         
         pintarCards(data);
