@@ -1,51 +1,40 @@
 console.log("Rick y Morty API");
 
+const items = document.getElementById('items');
+const template = document.getElementById('template-card').content;
+const fragment = document.createDocumentFragment();
+
 document.addEventListener('DOMContentLoaded', () => {
-    const random = getRandomInt(1, 20);
-    fetchData(random);
+    fetchData();
 })
 
-const getRandomInt = (min, max) => {
-    return Math.floor(Math.random()*(max - min)) + min;
-}
-const fetchData = async (id) =>{
+const fetchData = async () =>{
     try {
-        const res = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
+        const res = await fetch(`https://rickandmortyapi.com/api/character`);
         const data = await res.json();
-
-        console.log(data);
-
-        const api = {
-            img : data.image,
-            nombre : data.name,
-            estado : data.status,
-            especie : data.species,
-            genero: data.gender,
-            ubicacion: data.location.name,
-            origen: data.origin.name
-        }
         
-        pintarCard(api);
+        pintarCards(data);
+
     } catch (error) {
         console.log(error);
     }
 }
 
-const pintarCard = (api) => {
-    const flex = document.querySelector('.flex');
-    const template = document.querySelector('#template-card').content;
-    const clone = template.cloneNode(true);
-    const fragment = document.createDocumentFragment();
-
-    clone.querySelector('.card-body-img').setAttribute('src', api.img);
-    clone.querySelector('.nombre').innerHTML = api.nombre;
-    clone.querySelector('.estado').textContent = api.estado + " " + "-";
-    clone.querySelector('.especie').textContent = api.especie;
-    clone.querySelector('.genero').textContent = api.genero;
-    clone.querySelector('.ubicacion').textContent = api.ubicacion;
-    clone.querySelector('.origen').textContent = api.origen;
-    
-
-    fragment.appendChild(clone);
-    flex.appendChild(fragment);
+const pintarCards = data => {
+        Object.values(data.results).forEach((personaje) => {
+          console.log(personaje)
+          template.querySelector(".card-body-img").setAttribute("src", personaje.image);
+          template.querySelector(".nombre").textContent = personaje.name ;
+          template.querySelector(".estado").textContent = personaje.status +" " + "-";
+          template.querySelector(".especie").textContent = personaje.species;
+          template.querySelector(".genero").textContent = personaje.gender;
+          template.querySelector(".ubicacion").textContent = personaje.location.name;
+          template.querySelector(".origen").textContent = personaje.origin.name;
+      
+          const clone = template.cloneNode(true)
+          fragment.appendChild(clone)
+        })
+      
+        items.appendChild(fragment)
+        console.log(items);
 }

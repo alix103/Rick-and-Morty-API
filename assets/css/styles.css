@@ -1,5 +1,5 @@
 :root{
-    --fuente: 'Montserrat', sanserif;
+    --fuente: 'Unbounded', cursive;
 }
 
 *{
@@ -20,16 +20,26 @@ body h1{
     font-size: 50px;
 }
 
-.container{
+#items{
     width: 100%;
     max-width: 1300px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-left: 5rem;
-    margin-top: 4rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
 }
+
+/*.container{
+    
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap:1rem;
+    flex-wrap: wrap;
+    
+}*/
 
 .card{
     background-color: rgb(118, 69, 140);
@@ -61,12 +71,8 @@ body h1{
     margin-top: 15px;
 }
 
-/*.contenido h4, h2, p{
-    margin-bottom: 20px;
-}*/
-
 .contenido .section h4{
-    font-size: 20px;
+    font-size: 17px;
     margin-top: -20px;
     margin-bottom: 3px;
 }
@@ -74,8 +80,14 @@ body h1{
 .contenido .section p.ubi{
     margin-top: 20px;
     font-weight: bold;
+    font-size: 14px;
 }
 
 .contenido .section p.loca{
     margin-top: 5px;
+    font-size: 14px;
+}
+
+.estado, .especie{
+    font-size: 14px;
 }
