@@ -10,7 +10,9 @@
 
 body{
     font-family: var(--fuente);
-    background-color: rgb(77, 37, 113);
+    background: rgb(160,113,203);
+    background: linear-gradient(0deg, rgba(160,113,203,1) 10%, rgba(77,37,113,1) 100%);
+    /*background-color: rgb(77, 37, 113);*/
     color: white;
 }
 
